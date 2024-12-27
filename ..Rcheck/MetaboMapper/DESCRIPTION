@@ -1,0 +1,17 @@
+Package: MetaboMapper
+Type: Package
+Title: Metabolite Label Harmonization Tool
+Version: 0.0.1
+Author: person("Mariam", "Ait Oumelloul", email = "mariam.aitoumelloul@epfl.ch", role = c("cre","aut")),
+    person("Tancredi", "Guido Cogne", role = "ctb"))
+Maintainer: The package maintainer <mariam.aitoumelloul@epfl.ch>
+Description: A package designed for metabolite label matching, offering functions to map names or identifiers (e.g., HMDB, KEGG, CHEBI, INCHIKEY) to standardized HMDB identifiers. This facilitates the integration of datasets from diverse studies with varying annotations.
+License: MIT + file LICENSE
+URL: https://github.com/mariamaitoumelloul/MetaboMapper
+BugReports: https://github.com/mariamaitoumelloul/MetaboMapper/issues
+Depends: R (>= 4.3.0)
+Imports: dplyr, tidyr, xml2, pbapply, rlang, stats
+Suggests: pkgdown
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Built: R 4.3.0; ; 2024-12-27 12:37:24 UTC; unix

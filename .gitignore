@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/D5CEB0FD/viewer-cache/*
+\.DS_Store
+\.Rhistory
+./..Rcheck
+./MetaboMapper.Rcheck
+

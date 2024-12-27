@@ -1,0 +1,12 @@
+clean_hmdb_data	clean_hmdb_data
+extract_highest_star	extract_highest_star
+final_label_dataframe	final_label_dataframe
+hmdbextract	hmdbextract
+mapper_confidence_level	mapper_confidence_level
+map_unique_identifier	map_unique_identifier
+match_identifier	match_identifier
+MetaboMap	MetaboMap
+process_inchikey	process_inchikey
+process_labels	process_labels
+remove_letters_between_parentheses	remove_letters_between_parentheses
+safe_extract	safe_extract
