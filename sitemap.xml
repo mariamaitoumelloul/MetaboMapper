@@ -1,0 +1,20 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/MetaboMap.html</loc></url>
+<url><loc>/reference/clean_hmdb_data.html</loc></url>
+<url><loc>/reference/extract_highest_star.html</loc></url>
+<url><loc>/reference/final_label_dataframe.html</loc></url>
+<url><loc>/reference/hmdbextract.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/map_unique_identifier.html</loc></url>
+<url><loc>/reference/mapper_confidence_level.html</loc></url>
+<url><loc>/reference/match_identifier.html</loc></url>
+<url><loc>/reference/process_inchikey.html</loc></url>
+<url><loc>/reference/process_labels.html</loc></url>
+<url><loc>/reference/remove_letters_between_parentheses.html</loc></url>
+<url><loc>/reference/safe_extract.html</loc></url>
+</urlset>
+
