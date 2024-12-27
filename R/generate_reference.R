@@ -80,7 +80,7 @@ hmdbextract <- function(in_file) {
 
   # Parse each metabolite
   metabolites <- xml_find_all(doc, ".//hmdb:metabolite", ns = ns)
-  #pb <- progress_bar$new(total = length(metabolites), format = "  Progress [:bar] :percent :eta")
+
 
   print("Extracting information for each metabolite")
   # Initialize a list to store metabolite data
@@ -151,15 +151,6 @@ hmdbextract <- function(in_file) {
   return(df)
 }
 
-
-
-###END NEW TRY
-
-#TO LOAD
-library(xml2)
-library(purrr)
-library(dplyr)
-library(progress)
 
 
 
