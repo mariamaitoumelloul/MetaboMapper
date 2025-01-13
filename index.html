@@ -62,7 +62,58 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-A package designed for metabolite label matching, offering functions to map names or identifiers (e.g., HMDB, KEGG, CHEBI, INCHIKEY) to standardized HMDB identifiers. This facilitates the integration of datasets from diverse studies with varying annotations.
+
+<div class="section level1">
+<div class="page-header"><h1 id="metamapper-documentation">MetaMapper Documentation<a class="anchor" aria-label="anchor" href="#metamapper-documentation"></a>
+</h1></div>
+<p>MetaMapper is an R package developed to connect metabolite names and IDs from various metabolomic studies to HMDB identifiers, enabling cross-study comparisons. The package currently supports mapping the following types of identifiers to HMDB:</p>
+<ul>
+<li>Metabolite name<br>
+</li>
+<li>HMDB ID<br>
+</li>
+<li>INCHIKEY<br>
+</li>
+<li>KEGG ID<br>
+</li>
+<li>CHEBI ID</li>
+</ul>
+</div>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
+<p>```{r} #Install devtools in R install.packages(“devtools”)</p>
+<p>#Install MetaboMapper package install_github(“mariamaitoumelloul/MetaboMapper”)</p>
+<pre><code>
+
+# Building the reference from HMDB
+
+This step needs to bedone once per new XML document. Once generated, you can use the same reference for different studies/project.
+To build the reference file, you need to download metabolite in XML format from the HMDB official website [dowload here]([http://www.example.com](https://hmdb.ca/downloads). We recommend loading the "All metabolites" dataset.
+You can build the reference dataset by running the function hmbdexract provided by the package as follows:
+
+
+```{r}
+#replace path_to_xml by the corresponding path to your xml loaded from the hmdb database
+path_to_xml&lt;-"data/all_metabolites.xml"
+
+#run the function
+df_reference &lt;- hmdbextract(path_to_xm)</code></pre>
+<p>This function extract metabolite information from the HMDB XML file, organizing it into a structured data frame that will be used as the HMDB reference for the next steps. It should take a few minutes to run (&lt; 5min).</p>
+</div>
+<div class="section level1">
+<h1 id="building-the-reference-from-hmdb">Building the Reference from HMDB<a class="anchor" aria-label="anchor" href="#building-the-reference-from-hmdb"></a>
+</h1>
+<p>To build the reference file, you first need to download the metabolites dataset in XML format from the <a href="https://hmdb.ca/downloads" class="external-link">HMDB official website</a>. We recommend downloading the “All metabolites” dataset.</p>
+<p>Once downloaded, you can build the reference dataset by running the <code>hmdbextract</code> function provided by the package as follows:</p>
+<p>```{r} # Replace ‘path_to_xml’ with the actual path to your XML file downloaded from the HMDB database path_to_xml &lt;- “data/all_metabolites.xml”</p>
+</div>
+<div class="section level1">
+<h1 id="run-the-function-to-create-the-reference-dataset">Run the function to create the reference dataset<a class="anchor" aria-label="anchor" href="#run-the-function-to-create-the-reference-dataset"></a>
+</h1>
+<p>df_reference &lt;- hmdbextract(path_to_xml) ``` This step needs to be done only once for each new XML document. Once the reference file is generated, it can be reused across different studies or projects.</p>
+</div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
