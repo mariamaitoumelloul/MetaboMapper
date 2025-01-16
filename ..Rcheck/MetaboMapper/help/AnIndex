@@ -9,4 +9,5 @@ MetaboMap	MetaboMap
 process_inchikey	process_inchikey
 process_labels	process_labels
 remove_letters_between_parentheses	remove_letters_between_parentheses
+remove_stars_after_NA	remove_stars_after_NA
 safe_extract	safe_extract

@@ -17,16 +17,33 @@ flush(stderr()); flush(stdout())
 
 ### ** Examples
 
-# Example usage:
-study_data <- data.frame(metabolite_name=c("M1","M2"),id1 = c(1, 2), id2 = c("A", "B"))
-reference_data <- data.frame(ref_id = c(1, 2), name = c("X", "Y"))
+study_data <- data.frame(
+  metabolite_name = c("1-Methylhistidine", "2-Ketobutyric acid"),
+  HMDB_id = c("HMDB0000001", "HMDB0000005")
+)
+
+reference_data <- data.frame(
+  accession = c("HMDB0000001", "HMDB0000002", "HMDB0000005"),
+  name = c("1-Methylhistidine", "1,3-Diaminopropane", "2-Ketobutyric acid"),
+  all_HMDBs = c(
+    "HMDB0000001|HMDB00001|HMDB0004935",
+    "HMDB0000002|HMDB00002",
+    "HMDB0000005|HMDB00005|HMDB0006544"
+  ),
+  all_names = c(
+    "1-Methylhistidine|Pi-methylhistidine|",
+    "1,3-Diaminopropane|1,3-Propanediamine|1,3-Propylenediamine",
+    "2-Ketobutyric acid|2-Ketobutanoic acid|2-Oxobutyric acid"
+  )
+)
+
 result <- MetaboMap(
   df_study = study_data,
-  study_cols = c("id1", "id2"),
-  identifiers = c("ref_id", "name"),
+  study_cols = c("metabolite_name", "HMDB_id"),
+  identifiers = c("NAME", "HMDB"),
   df_reference = reference_data,
   details = FALSE,
-  original_name = "metabolite_name"
+  original_colname = "metabolite_name"
 )
 
 
@@ -38,7 +55,7 @@ nameEx("hmdbextract")
 flush(stderr()); flush(stdout())
 
 ### Name: hmdbextract
-### Title: Extract Information of interest from HMDB XML File
+### Title: Extract metabolite information from HMDB XML File
 ### Aliases: hmdbextract
 
 ### ** Examples

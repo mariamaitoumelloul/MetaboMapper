@@ -2,7 +2,7 @@
 % Please edit documentation in R/generate_reference.R
 \name{hmdbextract}
 \alias{hmdbextract}
-\title{Extract Information of interest from HMDB XML File}
+\title{Extract metabolite information from HMDB XML File}
 \usage{
 hmdbextract(in_file)
 }
@@ -29,12 +29,11 @@ A data frame containing extracted metabolite information with the following colu
 }
 }
 \description{
-Reads an HMDB XML file and extracts metabolite-related information into a structured data frame.
-This includes metabolite identifiers, taxonomy, and external references.
+Parses an HMDB XML file to extract metabolite-related information, organizing it into a structured data frame that will be used as the HMDB reference for the next steps.
 }
 \details{
-This function parses an HMDB XML file. It iterates through each metabolite
-node, extracts relevant fields, and returns the information as a data frame.
+This function parses an HMDB XML file (XML can be downloaded from the "Downloads" section here :https://hmdb.ca). It iterates through each metabolite
+node, extracts relevant fields, and returns the information as a data frame. The output will be used for the next steps as the reference.
 }
 \examples{
 \dontrun{

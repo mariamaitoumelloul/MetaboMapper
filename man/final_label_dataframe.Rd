@@ -4,15 +4,22 @@
 \alias{final_label_dataframe}
 \title{Generate a Final Labeled Dataframe}
 \usage{
-final_label_dataframe(data_input, details = FALSE, original_name = "")
+final_label_dataframe(
+  data_input,
+  study_cols,
+  details = FALSE,
+  original_colname
+)
 }
 \arguments{
 \item{data_input}{A data frame containing input data with columns for accession and name information.}
 
+\item{study_cols}{A column name or a vector of column names in `df_study` corresponding to identifiers to be mapped.}
+
 \item{details}{Logical, indicating whether to include all details in the output. If `TRUE`, the entire dataframe is returned
 with renamed columns for clarity. If `FALSE`, only selected columns are returned.}
 
-\item{original_name}{A character string representing the column name in the input data that identifies the original study.}
+\item{original_colname}{the name of the column containing the original metabolites label}
 }
 \value{
 A data frame with the final processed results:

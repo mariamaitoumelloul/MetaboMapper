@@ -85,26 +85,26 @@ No file Rd2.toc.
 ocal/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/20
 24/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/202
 4/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] [2]
-Overfull \hbox (20.69626pt too wide) in paragraph at lines 119--126
+Overfull \hbox (20.69626pt too wide) in paragraph at lines 127--134
 []\T1/ptm/m/n/10 The func-tion per-forms the fol-low-ing steps: 1. Iden-ti-fies
  columns start-ing with `"ac-ces-sion_in_reference"`
 [3] [4]
-Overfull \hbox (9.94698pt too wide) in paragraph at lines 229--232
+Overfull \hbox (9.94698pt too wide) in paragraph at lines 236--239
 []\T1/ptm/m/n/10 Maps a given metabo-lite iden-ti-fier type in a co-hort data f
 rame to ref-er-ence iden-ti-fiers (e.g., INCHIKEY,
 [5] [6]
-Overfull \hbox (92.98724pt too wide) in paragraph at lines 333--334
+Overfull \hbox (92.98724pt too wide) in paragraph at lines 340--341
 \T1/ptm/m/n/10 same or-der as `study_cols`. It can takes val-ues c("HMDB","NAME
 ","KEGG","CHEBI","INCHIKEY") 
 [7]
-Overfull \hbox (11.36816pt too wide) in paragraph at lines 384--386
+Overfull \hbox (11.36816pt too wide) in paragraph at lines 408--410
 []\T1/ptm/m/n/10 An in-te-ger spec-i-fy-ing the num-ber of char-ac-ters to ex-t
 ract for the skele-ton InChIKey.
-[8] [9]
+[8] [9] [10]
 No file Rd2.ind.
-[10]
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.aux)
+[11]
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -119,12 +119,12 @@ xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on Rd2.pdf (10 pages, 105567 bytes).
+Output written on Rd2.pdf (11 pages, 109992 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.17 [TeX Live 2024] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (22 entries accepted, 0 rejected).
-Sorting entries....done (100 comparisons).
-Generating output file Rd2.ind....done (52 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (24 entries accepted, 0 rejected).
+Sorting entries....done (112 comparisons).
+Generating output file Rd2.ind....done (54 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
@@ -196,50 +196,50 @@ ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 Writing index file Rd2.idx
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1ptm.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.aux)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.aux)
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 )
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.out)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.out)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.out)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.out)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.toc) [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.toc) [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/
 pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/us
 r/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr
 /local/texlive/2024/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]
 [2]
-Overfull \hbox (20.69626pt too wide) in paragraph at lines 119--126
+Overfull \hbox (20.69626pt too wide) in paragraph at lines 127--134
 []\T1/ptm/m/n/10 The func-tion per-forms the fol-low-ing steps: 1. Iden-ti-fies
  columns start-ing with `"ac-ces-sion_in_reference"`
 [3] [4]
-Overfull \hbox (9.94698pt too wide) in paragraph at lines 229--232
+Overfull \hbox (9.94698pt too wide) in paragraph at lines 236--239
 []\T1/ptm/m/n/10 Maps a given metabo-lite iden-ti-fier type in a co-hort data f
 rame to ref-er-ence iden-ti-fiers (e.g., INCHIKEY,
 [5] [6]
-Overfull \hbox (92.98724pt too wide) in paragraph at lines 333--334
+Overfull \hbox (92.98724pt too wide) in paragraph at lines 340--341
 \T1/ptm/m/n/10 same or-der as `study_cols`. It can takes val-ues c("HMDB","NAME
 ","KEGG","CHEBI","INCHIKEY") 
 [7]
-Overfull \hbox (11.36816pt too wide) in paragraph at lines 384--386
+Overfull \hbox (11.36816pt too wide) in paragraph at lines 408--410
 []\T1/ptm/m/n/10 An in-te-ger spec-i-fy-ing the num-ber of char-ac-ters to ex-t
 ract for the skele-ton InChIKey.
-[8] [9]
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.ind [10]
+[8] [9] [10]
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.ind [11]
 Overfull \hbox (3.3567pt too wide) in paragraph at lines 12--14
 []| \T1/zi4/m/n/10 remove_letters_between_parentheses\T1/ptm/m/n/10 , 
-[11])
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.aux)
+[12])
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.aux)
 
 Package rerunfilecheck Warning: File `Rd2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -255,12 +255,12 @@ mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
 urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on Rd2.pdf (11 pages, 117214 bytes).
+Output written on Rd2.pdf (12 pages, 121378 bytes).
 Transcript written on Rd2.log.
 This is makeindex, version 2.17 [TeX Live 2024] (kpathsea + Thai support).
-Scanning input file Rd2.idx....done (22 entries accepted, 0 rejected).
-Sorting entries....done (100 comparisons).
-Generating output file Rd2.ind....done (52 lines written, 0 warnings).
+Scanning input file Rd2.idx....done (24 entries accepted, 0 rejected).
+Sorting entries....done (112 comparisons).
+Generating output file Rd2.ind....done (54 lines written, 0 warnings).
 Output written in Rd2.ind.
 Transcript written in Rd2.ilg.
 This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex)
@@ -332,50 +332,50 @@ ty (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
 Writing index file Rd2.idx
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1ptm.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.aux)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.aux)
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 )
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.out)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.out)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.out)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.out)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.toc) [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/
-pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/us
-r/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr
-/local/texlive/2024/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.toc [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/p
+dftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr
+/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/
+local/texlive/2024/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}])
 [2]
-Overfull \hbox (20.69626pt too wide) in paragraph at lines 119--126
+Overfull \hbox (20.69626pt too wide) in paragraph at lines 127--134
 []\T1/ptm/m/n/10 The func-tion per-forms the fol-low-ing steps: 1. Iden-ti-fies
  columns start-ing with `"ac-ces-sion_in_reference"`
 [3] [4]
-Overfull \hbox (9.94698pt too wide) in paragraph at lines 229--232
+Overfull \hbox (9.94698pt too wide) in paragraph at lines 236--239
 []\T1/ptm/m/n/10 Maps a given metabo-lite iden-ti-fier type in a co-hort data f
 rame to ref-er-ence iden-ti-fiers (e.g., INCHIKEY,
 [5] [6]
-Overfull \hbox (92.98724pt too wide) in paragraph at lines 333--334
+Overfull \hbox (92.98724pt too wide) in paragraph at lines 340--341
 \T1/ptm/m/n/10 same or-der as `study_cols`. It can takes val-ues c("HMDB","NAME
 ","KEGG","CHEBI","INCHIKEY") 
 [7]
-Overfull \hbox (11.36816pt too wide) in paragraph at lines 384--386
+Overfull \hbox (11.36816pt too wide) in paragraph at lines 408--410
 []\T1/ptm/m/n/10 An in-te-ger spec-i-fy-ing the num-ber of char-ac-ters to ex-t
 ract for the skele-ton InChIKey.
-[8] [9]
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.ind [10]
+[8] [9] [10]
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.ind [11]
 Overfull \hbox (3.3567pt too wide) in paragraph at lines 12--14
 []| \T1/zi4/m/n/10 remove_letters_between_parentheses\T1/ptm/m/n/10 , 
-[11])
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpxD9YNQ/Rd2pdf57e6
-14fbbdd2/Rd2.aux) )
+[12])
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
+79acc252/Rd2.aux) )
 (see the transcript file for additional information)</usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
@@ -385,8 +385,8 @@ mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
 urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on Rd2.pdf (11 pages, 117561 bytes).
+Output written on Rd2.pdf (12 pages, 121641 bytes).
 Transcript written on Rd2.log.
 Saving output to ‘MetaboMapper-manual.pdf’ ...
 Done
-You may want to clean up by 'rm -Rf /var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T//RtmpxD9YNQ/Rd2pdf57e614fbbdd2'
+You may want to clean up by 'rm -Rf /var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T//RtmpuCxpnZ/Rd2pdfd70779acc252'

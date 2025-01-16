@@ -17,9 +17,14 @@
 * checking for executable files ... OK
 * checking for hidden files and directories ... NOTE
 Found the following hidden files and directories:
+  .DS_Store
   .Rhistory
   .github/.gitignore
   .gitignore
+  R/.RData
+  R/.Rhistory
+  tests/.DS_Store
+  tests/testthat/.DS_Store
   ..Rcheck
   .Rproj.user
   .git
@@ -28,10 +33,7 @@ These were most likely included in error. See section ‘Package
 structure’ in the ‘Writing R Extensions’ manual.
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
-* checking whether package ‘MetaboMapper’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: package ‘xml2’ was built under R version 4.3.1
-See ‘/Users/aitoumel/Desktop/SHCS_metab_final/replications/RPackage/MetaboMapper/..Rcheck/00install.out’ for details.
+* checking whether package ‘MetaboMapper’ can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking DESCRIPTION meta-information ... NOTE
@@ -40,9 +42,8 @@ Checking should be performed on sources prepared by ‘R CMD build’.
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... WARNING
-Found the following directories with names of check directories:
+Found the following directory with the name of a check directory:
   ./..Rcheck
-  ./MetaboMapper.Rcheck
 Most likely, these were included erroneously.
 * checking R files for non-ASCII characters ... OK
 * checking R files for syntax errors ... OK
@@ -55,7 +56,10 @@ Most likely, these were included erroneously.
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
-* checking R code for possible problems ... OK
+* checking R code for possible problems ... NOTE
+final_label_dataframe: no visible binding for global variable ‘HMDB_id’
+Undefined global functions or variables:
+  HMDB_id
 * checking Rd files ... OK
 * checking Rd metadata ... OK
 * checking Rd cross-references ... OK
@@ -65,6 +69,9 @@ Most likely, these were included erroneously.
 * checking Rd contents ... OK
 * checking for unstated dependencies in examples ... OK
 * checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘test.R’
 * checking PDF version of manual ... OK
 * DONE
-Status: 2 WARNINGs, 2 NOTEs
+Status: 1 WARNING, 3 NOTEs

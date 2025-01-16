@@ -11,7 +11,8 @@ URL: https://github.com/mariamaitoumelloul/MetaboMapper
 BugReports: https://github.com/mariamaitoumelloul/MetaboMapper/issues
 Depends: R (>= 4.3.0)
 Imports: dplyr, tidyr, xml2, pbapply, rlang, stats
-Suggests: pkgdown
+Suggests: pkgdown, testthat (>= 3.0.0)
 Encoding: UTF-8
 RoxygenNote: 7.3.2
-Built: R 4.3.0; ; 2024-12-27 12:37:24 UTC; unix
+Config/testthat/edition: 3
+Built: R 4.3.0; ; 2025-01-16 18:27:46 UTC; unix

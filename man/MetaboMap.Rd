@@ -10,11 +10,11 @@ MetaboMap(
   identifiers,
   df_reference,
   details = FALSE,
-  original_name = ""
+  original_colname
 )
 }
 \arguments{
-\item{df_study}{A data frame representing the study data containing metabolites information to be processed.}
+\item{df_study}{A data frame containing metabolite information from the study, where each row corresponds to a metabolite and each column contain one identifier.}
 
 \item{study_cols}{A column name or a vector of column names in `df_study` corresponding to identifiers to be mapped.}
 
@@ -24,24 +24,41 @@ MetaboMap(
 
 \item{details}{A boolean- Default Value is FALSE. TRUE allows to have additional details for each mapping identifier.}
 
-\item{original_name}{The original name of the data or dataset for labeling purposes. Default value is "study".}
+\item{original_colname}{A column name in `df_study` containing the original metabolites label in the study}
 }
 \value{
 A data frame object containing the mapped identifiers with confidence levels.
 }
 \description{
-Maps multiple identifiers from a study data frame to a reference data frame by iterating through corresponding identifier and study column pairs. Ensures data integrity, applies mapping functions, and adds confidence levels and labels.
+Matches one or multiple metabolites identifiers of interest between the study dataframe and the generated reference dataframe from HMDB.
 }
 \examples{
-# Example usage:
-study_data <- data.frame(metabolite_name=c("M1","M2"),id1 = c(1, 2), id2 = c("A", "B"))
-reference_data <- data.frame(ref_id = c(1, 2), name = c("X", "Y"))
+study_data <- data.frame(
+  metabolite_name = c("1-Methylhistidine", "2-Ketobutyric acid"),
+  HMDB_id = c("HMDB0000001", "HMDB0000005")
+)
+
+reference_data <- data.frame(
+  accession = c("HMDB0000001", "HMDB0000002", "HMDB0000005"),
+  name = c("1-Methylhistidine", "1,3-Diaminopropane", "2-Ketobutyric acid"),
+  all_HMDBs = c(
+    "HMDB0000001|HMDB00001|HMDB0004935",
+    "HMDB0000002|HMDB00002",
+    "HMDB0000005|HMDB00005|HMDB0006544"
+  ),
+  all_names = c(
+    "1-Methylhistidine|Pi-methylhistidine|",
+    "1,3-Diaminopropane|1,3-Propanediamine|1,3-Propylenediamine",
+    "2-Ketobutyric acid|2-Ketobutanoic acid|2-Oxobutyric acid"
+  )
+)
+
 result <- MetaboMap(
   df_study = study_data,
-  study_cols = c("id1", "id2"),
-  identifiers = c("ref_id", "name"),
+  study_cols = c("metabolite_name", "HMDB_id"),
+  identifiers = c("NAME", "HMDB"),
   df_reference = reference_data,
   details = FALSE,
-  original_name = "metabolite_name"
+  original_colname = "metabolite_name"
 )
 }

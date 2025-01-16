@@ -2,7 +2,7 @@ Package: MetaboMapper
 Type: Package
 Title: Metabolite Label Harmonization Tool
 Version: 0.0.1
-Author:  person("Mariam", "Ait Oumelloul", email = "mariam.aitoumelloul@epfl.ch", role = c("cre","aut")),
+Author: person("Mariam", "Ait Oumelloul", email = "mariam.aitoumelloul@epfl.ch", role = c("cre","aut")),
     person("Tancredi", "Guido Cogne", role = "ctb"))
 Maintainer: The package maintainer <mariam.aitoumelloul@epfl.ch>
 Description: A package designed for metabolite label matching, offering functions to map names or identifiers (e.g., HMDB, KEGG, CHEBI, INCHIKEY) to standardized HMDB identifiers. This facilitates the integration of datasets from diverse studies with varying annotations.
@@ -18,7 +18,9 @@ Imports:
     pbapply,
     rlang,
     stats
-Suggests:  
-    pkgdown
+Suggests: 
+    pkgdown,
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 RoxygenNote: 7.3.2
+Config/testthat/edition: 3

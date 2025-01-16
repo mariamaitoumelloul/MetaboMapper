@@ -152,7 +152,7 @@ match_identifier <- function(df_cohort, col_cohort,df_reference, col_reference, 
 
 
   nb_av_ids <-  sum(!is.na(df_cohort[[col_cohort]]) & df_cohort[[col_cohort]] != "NA" & df_cohort[[col_cohort]] != "")
-  print(paste("Number of identifier available your dataset: ", nb_av_ids))
+  print(paste("Number of identifier available in your dataset: ", nb_av_ids))
   #select column of interest from the database
   colnames(df_reference)<-paste0(colnames(df_reference),"_in_reference_",identifier)
 
@@ -319,7 +319,7 @@ extract_highest_star <- function(s) {
     return(NA_character_)
   }
   # Combine all highest star items into a single string separated by '/'
-  return(paste(unlist(highest_star_items), collapse = "/"))
+  return(paste(unlist(unique(highest_star_items)), collapse = "/"))
 }
 
 
@@ -356,8 +356,9 @@ mapper_confidence_level <- function(data) {
   # Loop through each column name
   for (columnName in columnNames) {
     # Check if the column name ends with "_HMDB", "_inchikey_", "_labels", or "_skeleton"
-    if (grepl("_HMDB$|_inchikey$|_NAME$|_skeleton$", columnName)) {
+    if (grepl("_HMDB$|_inchikey$|_NAME$|_skeleton$|_KEGG$|_CHEBI$", columnName)) {
       # Get the column using the $ operator
+      data[[columnName]]<-as.character(data[[columnName]])
       column <- data[[columnName]]
 
       # Check if the column is character
@@ -389,6 +390,32 @@ mapper_confidence_level <- function(data) {
   return(data)
 }
 
+
+#' Remove Stars After "NA"
+#'
+#' This function removes all asterisks (`*`) that appear immediately after the string "NA"
+#' in a given column of data. It uses a regular expression to identify and replace
+#' such patterns.
+#'
+#' @param column A character vector representing a column of data. This can be a single
+#' column from a dataframe or a standalone vector.
+#'
+#' @return A character vector with all occurrences of "NA" followed by one or more
+#' asterisks (`*`) replaced with "NA".
+#'
+#' @keywords internal
+remove_stars_after_NA <- function(column) {
+  gsub("NA\\*+", NA, column)
+}
+
+
+
+
+
+
+
+
+
 #' @title Generate a Final Labeled Dataframe
 #'
 #' @description This function processes an input dataset  by combining and selecting
@@ -397,7 +424,8 @@ mapper_confidence_level <- function(data) {
 #' @param data_input A data frame containing input data with columns for accession and name information.
 #' @param details Logical, indicating whether to include all details in the output. If `TRUE`, the entire dataframe is returned
 #' with renamed columns for clarity. If `FALSE`, only selected columns are returned.
-#' @param original_name A character string representing the column name in the input data that identifies the original study.
+#' @param study_cols A column name or a vector of column names in `df_study` corresponding to identifiers to be mapped.
+#' @param original_colname the name of the column containing the original metabolites label
 #'
 #' @details
 #' The function performs the following steps:
@@ -417,52 +445,124 @@ mapper_confidence_level <- function(data) {
 #' @importFrom stats na.omit
 #' @keywords internal
 #'
-final_label_dataframe <- function(data_input, details=FALSE,original_name="") {
+final_label_dataframe <- function(data_input,study_cols, details=FALSE, original_colname) {
 
   # Create vectors of column names starting with "accession_in_synonyms" and "name_in_synonyms"
   accession_columns <- grep("^accession_in_reference", names(data_input), value = TRUE)
   name_columns <- grep("^name_in_reference", names(data_input), value = TRUE)
 
+
+  ###OLD
   # Create new columns "HMDB_id" and "HMDB_label" by combining unique non-NA values
-  data_input <- data_input %>%
-    rowwise() %>%
-    mutate(HMDB_id_list = {
-      values <- unique(na.omit(c_across(all_of(accession_columns))))
-      non_empty_values <- values[values != ""]
-      if (length(non_empty_values) > 0) {
-        paste(non_empty_values, collapse = "//")
-      } else {
-        NA_character_
-      }
-    })
+  # data_input <- data_input %>%mutate(across(all_of(accession_columns), remove_stars_after_NA)) %>%
+  #   mutate(across(all_of(name_columns), remove_stars_after_NA)) %>%
+  #   rowwise() %>%
+  #   mutate(HMDB_id_list = {
+  #     values <- unique(na.omit(c_across(all_of(accession_columns))))
+  #     non_empty_values <- values[values != ""]
+  #     if (length(non_empty_values) > 0) {
+  #       paste(non_empty_values, collapse = "//")
+  #     } else {
+  #       NA_character_
+  #     }
+  #   })
+  #
+  # data_input <- data_input %>%
+  #   rowwise() %>%
+  #   mutate(HMDB_name_list = {
+  #     values <- unique(na.omit(c_across(all_of(name_columns))))
+  #     non_empty_values <- values[values != ""]
+  #     if (length(non_empty_values) > 0) {
+  #       paste(non_empty_values, collapse = "//")
+  #     } else {
+  #       NA_character_
+  #     }
+  #   })
+
+   ##END OLD
 
   data_input <- data_input %>%
-    rowwise() %>%
-    mutate(HMDB_name_list = {
-      values <- unique(na.omit(c_across(all_of(name_columns))))
-      non_empty_values <- values[values != ""]
-      if (length(non_empty_values) > 0) {
-        paste(non_empty_values, collapse = "//")
-      } else {
-        NA_character_
+    mutate(across(all_of(accession_columns), remove_stars_after_NA)) %>%  # Clean accession columns
+    mutate(across(all_of(name_columns), remove_stars_after_NA)) %>%      # Clean name columns
+    rowwise() %>%  # Rowwise operation to process each row independently
+    mutate(
+      HMDB_id_list = {
+        # Get unique non-NA values from the accession columns
+        values <- unique(na.omit(c_across(all_of(accession_columns))))
+        non_empty_values <- values[values != ""]
+
+        # Concatenate non-empty values or return NA if no valid values
+        if (length(non_empty_values) > 0) {
+          paste(non_empty_values, collapse = "//")
+        } else {
+          NA_character_
+        }
       }
-    })
+    ) %>%
+    ungroup() %>%  # Remove rowwise grouping after creation of HMDB_id_list
+    group_by_at(original_colname) %>%  # Group by the column specified in original_colname
+    mutate(
+      HMDB_id_list = paste(unique(na.omit(HMDB_id_list)), collapse = "//")  # Concatenate values within each group
+    )
+
+
+  data_input <- data_input %>%
+    mutate(across(all_of(accession_columns), remove_stars_after_NA)) %>%  # Clean accession columns
+    mutate(across(all_of(name_columns), remove_stars_after_NA)) %>%      # Clean name columns
+    rowwise() %>%  # Rowwise operation to process each row independently
+    mutate(
+      HMDB_name_list = {
+        # Get unique non-NA values from the accession columns
+        values <- unique(na.omit(c_across(all_of(accession_columns))))
+        non_empty_values <- values[values != ""]
+
+        # Concatenate non-empty values or return NA if no valid values
+        if (length(non_empty_values) > 0) {
+          paste(non_empty_values, collapse = "//")
+        } else {
+          NA_character_
+        }
+      }
+    ) %>%
+    ungroup() %>%  # Remove rowwise grouping after creation of HMDB_name_list
+    group_by_at(original_colname) %>%  # Group by the column specified in original_colname
+    mutate(
+      HMDB_name_list = paste(unique(na.omit(HMDB_name_list)), collapse = "//")  # Concatenate values within each group
+    )
+
 
   data_input <- data_input %>%
     mutate(HMDB_id = sapply(HMDB_id_list, function(x) ifelse(is.na(x), NA_character_, extract_highest_star(x))),
            HMDB_label = sapply(HMDB_name_list, function(x) ifelse(is.na(x), NA_character_, extract_highest_star(x))))
 
+
+
   # Add a new column for the number of stars
   data_input <- data_input %>%
-    mutate(Num_Stars = sapply(HMDB_label, function(x) length(gregexpr("\\*", x)[[1]])))
+    mutate(Num_Stars = sapply(HMDB_label, function(x) {
+    if (is.na(x)) {
+      return(0) # Handle NA values explicitly
+    }
+    matches <- gregexpr("\\*+", x)[[1]]
+    if (all(matches == -1)) { # If no stars are found
+      return(0)
+    } else {
+      return(max(attr(matches, "match.length"), na.rm = TRUE))
+    }
+  }))
+  # data_input <- data_input %>%
+  #   mutate(
+  #     Num_Stars = case_when(
+  #       Num_Stars == 6 ~ 3,  # If Num_Stars is 6, set it to 3
+  #       Num_Stars == 4 ~ 2,  # If Num_Stars is 4, set it to 2
+  #       TRUE ~ Num_Stars    # For other values, leave Num_Stars unchanged
+  #     )
+  #   )
+
   data_input <- data_input %>%
-    mutate(
-      Num_Stars = case_when(
-        Num_Stars == 6 ~ 3,  # If Num_Stars is 6, set it to 3
-        Num_Stars == 4 ~ 2,  # If Num_Stars is 4, set it to 2
-        TRUE ~ Num_Stars    # For other values, leave Num_Stars unchanged
-      )
-    )
+    mutate(HMDB_label = gsub("\\*", "", HMDB_label))%>%
+    mutate(HMDB_id = gsub("\\*", "", HMDB_id))
+
 
   if (details==TRUE){
     data_input_selected <- data_input
@@ -470,11 +570,15 @@ final_label_dataframe <- function(data_input, details=FALSE,original_name="") {
 
   }else{
 
-    data_input_selected <- data_input%>%dplyr::select(original_name, "HMDB_label", "HMDB_id", "Num_Stars")
+    data_input_selected <- data_input%>%dplyr::select(original_colname,study_cols, "HMDB_label", "HMDB_id", "Num_Stars")%>%
+      mutate(HMDB_label = gsub("\\*+$", "", HMDB_label))%>%
+      mutate(HMDB_id = gsub("\\*+$", "", HMDB_id))
     data_input_selected<-data_input_selected%>%rename("Confidence Level"="Num_Stars")
+
   }
 
 
+  data_input_selected <- dplyr::distinct(data_input_selected, .data[[original_colname]], .keep_all = TRUE)
 
   return(data_input_selected)
 }
