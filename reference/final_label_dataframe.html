@@ -52,7 +52,12 @@ relevant columns (identifiers with highest confidence levels)</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">final_label_dataframe</span><span class="op">(</span><span class="va">data_input</span>, details <span class="op">=</span> <span class="cn">FALSE</span>, original_name <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">final_label_dataframe</span><span class="op">(</span></span>
+<span>  <span class="va">data_input</span>,</span>
+<span>  <span class="va">study_cols</span>,</span>
+<span>  details <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">original_colname</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -63,13 +68,17 @@ relevant columns (identifiers with highest confidence levels)</p>
 <dd><p>A data frame containing input data with columns for accession and name information.</p></dd>
 
 
+<dt id="arg-study-cols">study_cols<a class="anchor" aria-label="anchor" href="#arg-study-cols"></a></dt>
+<dd><p>A column name or a vector of column names in `df_study` corresponding to identifiers to be mapped.</p></dd>
+
+
 <dt id="arg-details">details<a class="anchor" aria-label="anchor" href="#arg-details"></a></dt>
 <dd><p>Logical, indicating whether to include all details in the output. If `TRUE`, the entire dataframe is returned
 with renamed columns for clarity. If `FALSE`, only selected columns are returned.</p></dd>
 
 
-<dt id="arg-original-name">original_name<a class="anchor" aria-label="anchor" href="#arg-original-name"></a></dt>
-<dd><p>A character string representing the column name in the input data that identifies the original study.</p></dd>
+<dt id="arg-original-colname">original_colname<a class="anchor" aria-label="anchor" href="#arg-original-colname"></a></dt>
+<dd><p>the name of the column containing the original metabolites label</p></dd>
 
 </dl></div>
     <div id="value">
