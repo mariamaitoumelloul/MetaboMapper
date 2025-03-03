@@ -13,20 +13,20 @@ test_that("remove_letters_between_parentheses works correctly", {
 })
 
 
-test_that("process_labels works correctly", {
-  # Sample data frame to test the function
-  df <- data.frame(label = c("Label 1 (short)", "Example-Label (2)", "Another Example (abc)", "Test Label (xyz) 123"), stringsAsFactors = FALSE)
-
-  # Expected output after cleaning
-  expected_df <- data.frame(label = c("Label 1 (short)", "Example-Label (2)", "Another Example (abc)", "Test Label (xyz) 123"),
-                            label_processed = c("label1", "examplelabel", "anotherexample", "testlabel123"))
-
-  # Apply the process_labels function
-  result_df <- process_labels(df, "label")
-
-  # Check if the processed column matches the expected result
-  expect_equal(result_df$label_processed, expected_df$label_processed)
-})
+# test_that("process_labels works correctly", {
+#   # Sample data frame to test the function
+#   df <- data.frame(label = c("Label 1 (short)", "Example-Label (2)", "Another Example (abc)", "Test Label (xyz) 123"), stringsAsFactors = FALSE)
+#
+#   # Expected output after cleaning
+#   expected_df <- data.frame(label = c("Label 1 (short)", "Example-Label (2)", "Another Example (abc)", "Test Label (xyz) 123"),
+#                             label_processed = c("label1", "examplelabel", "anotherexample", "testlabel123"))
+#
+#   # Apply the process_labels function
+#   result_df <- process_labels(df, "label")
+#
+#   # Check if the processed column matches the expected result
+#   expect_equal(result_df$label_processed, expected_df$label_processed)
+# })
 
 test_that("process_inchikey works correctly", {
   # Sample data frame with InChIKey

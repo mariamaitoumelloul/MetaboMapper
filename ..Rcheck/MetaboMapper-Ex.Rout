@@ -73,6 +73,7 @@ Processing identifier: HMDB
 Using study column: HMDB_id 
 [1] "Number of identifier available in your dataset:  2"
 [1] "2  metabolites mapped to HMDB Ids based on their HMDB identifiers."
+[1] "done"
 > 
 > 
 > 
@@ -102,7 +103,7 @@ Using study column: HMDB_id
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.345 0.023 0.371 0 0 
+Time elapsed:  0.255 0.018 0.273 0 0 
 > grDevices::dev.off()
 null device 
           1 

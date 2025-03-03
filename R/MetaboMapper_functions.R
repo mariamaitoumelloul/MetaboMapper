@@ -43,7 +43,7 @@
 #' @export
 MetaboMap <- function(df_study, study_cols, identifiers ,df_reference,details=FALSE,original_colname) {
 
-
+  df_study_temp<-df_study%>%dplyr::select(original_colname,study_cols)
   # Ensure all vectors are of the same length
   if (length(identifiers) != length(study_cols) ) {
     stop("Identifiers and study_cols must have the same length!")
@@ -89,7 +89,7 @@ MetaboMap <- function(df_study, study_cols, identifiers ,df_reference,details=FA
   }
 
     if(identifier=="NAME"){
-      if (any(grepl("[/|]", df_study[[col_study]]))) {
+      if (any(grepl("[|]", df_study[[col_study]]))) {
         warning("Warning: Separation character(s) found in the column ",col_study,". Ensure to have one ID per identifier per row.")
       }
     }
@@ -100,12 +100,26 @@ MetaboMap <- function(df_study, study_cols, identifiers ,df_reference,details=FA
 
     # Call the map_metab function for this identifier and columns
     df_study <- map_unique_identifier(df_study, col_study,df_reference, identifier)
+    df_study<-merge(df_study_temp,df_study,by=c(original_colname,study_cols),all.x=T)
   }
 
 
   df_study<-mapper_confidence_level(df_study)
 
   df_study<-final_label_dataframe(df_study,study_cols=study_cols, details=details,original_colname)
+  df_study<-as.data.frame(df_study)
+
+
+  mapped_columns <- grep("^mapped_to", colnames(df_study), value = TRUE)
+
+  # df_study <- df_study %>%
+  #   mutate(across(all_of(mapped_columns), ~ replace(., is.na(.) | . == "NA", FALSE)))
+
+  df_study <- df_study %>%
+    mutate(across(all_of(mapped_columns), ~ ifelse(is.na(.) | . == "NA", FALSE, .)))
+
+  print("done")
+
   return(df_study)
 
 }

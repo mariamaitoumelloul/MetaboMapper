@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.27)  16 JAN 2025 19:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.27)  1 FEB 2025 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,8 +352,8 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count294
 \l__pdf_internal_box=\box58
 )
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
-79acc252/Rd2.aux)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpPRVBuQ/Rd2pdf6b39
+1dc3031f/Rd2.aux)
 \openout1 = `Rd2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -391,10 +391,10 @@ LaTeX Font Info:    ... okay on input line 8.
 )
 Package hyperref Info: Link coloring ON on input line 8.
 
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
-79acc252/Rd2.out)
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
-79acc252/Rd2.out)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpPRVBuQ/Rd2pdf6b39
+1dc3031f/Rd2.out)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpPRVBuQ/Rd2pdf6b39
+1dc3031f/Rd2.out)
 \@outlinefile=\write4
 \openout4 = `Rd2.out'.
 
@@ -484,8 +484,8 @@ LaTeX Font Info:    Trying to load font information for T1+phv on input line 35
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
-79acc252/Rd2.toc [1
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpPRVBuQ/Rd2pdf6b39
+1dc3031f/Rd2.toc [1
 
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
@@ -524,8 +524,8 @@ ract for the skele-ton InChIKey.
  []
 
 [8] [9] [10]
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
-79acc252/Rd2.ind [11]
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpPRVBuQ/Rd2pdf6b39
+1dc3031f/Rd2.ind [11]
 Overfull \hbox (3.3567pt too wide) in paragraph at lines 12--14
 []| \T1/zi4/m/n/10 remove_letters_between_parentheses\T1/ptm/m/n/10 , 
  []
@@ -534,8 +534,8 @@ Overfull \hbox (3.3567pt too wide) in paragraph at lines 12--14
 
 
 ])
-(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpuCxpnZ/Rd2pdfd707
-79acc252/Rd2.aux)
+(/private/var/folders/xs/g8zzhysj7mq_8_s9zl6nzttr0000gq/T/RtmpPRVBuQ/Rd2pdf6b39
+1dc3031f/Rd2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -559,7 +559,7 @@ msy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1
 al/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rd2.pdf (12 pages, 121641 bytes).
+Output written on Rd2.pdf (12 pages, 121643 bytes).
 PDF statistics:
  300 PDF objects out of 1000 (max. 8388607)
  267 compressed objects within 3 object streams

@@ -29,10 +29,10 @@ package 'testthat' was built under R version 4.3.1
 > library(MetaboMapper)
 > 
 > test_check("MetaboMapper")
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 12 ]
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 7 ]
 > 
 > 
 > 
 > proc.time()
    user  system elapsed 
-  0.460   0.060   0.523 
+  0.313   0.040   0.351 

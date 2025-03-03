@@ -4,12 +4,14 @@
 \alias{process_labels}
 \title{Process Labels}
 \usage{
-process_labels(df, col_name)
+process_labels(df, col_name, reference)
 }
 \arguments{
 \item{df}{A data frame containing the labels to be processed.}
 
 \item{col_name}{The name of the column containing the labels to be processed.}
+
+\item{reference}{Boolean, if equal=TRUE the function will not remove the letters between parenthesis}
 }
 \value{
 A data frame with a new column `label_processed`, which contains the cleaned labels.

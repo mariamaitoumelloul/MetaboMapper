@@ -34,6 +34,7 @@ return(modified_text)
 #'
 #' @param df A data frame containing the labels to be processed.
 #' @param col_name The name of the column containing the labels to be processed.
+#' @param reference Boolean, if equal=TRUE the function will not remove the letters between parenthesis
 #'
 #' @return A data frame with a new column `label_processed`, which contains the cleaned labels.
 #'
@@ -47,7 +48,7 @@ return(modified_text)
 #' - The cleaned labels are stored in a new column `label_processed`.
 #'
 #'@keywords internal
-process_labels <- function(df, col_name) {
+process_labels <- function(df, col_name, reference) {
 
   # Remove spaces
   df$label_processed <- gsub(" ", "", df[[col_name]])
@@ -68,12 +69,16 @@ process_labels <- function(df, col_name) {
   df$label_processed <- gsub("\\*", "", df$label_processed)
 
 
+  if(reference==FALSE){
+
+  df$label_processed <- gsub("^(\\(R\\)|\\(L\\))", "", df$label_processed)
+
   #when they use shorter names
   df$label_processed <-remove_letters_between_parentheses(df$label_processed)
 
   #remove (1), (2) ..(n) where n is a number in a parenthesis ending the caracter
   df$label_processed <- gsub("\\s*\\(\\d+\\)$", "",  df$label_processed)
-
+  }
 
   return(df)
 }
@@ -156,8 +161,10 @@ match_identifier <- function(df_cohort, col_cohort,df_reference, col_reference, 
   #select column of interest from the database
   colnames(df_reference)<-paste0(colnames(df_reference),"_in_reference_",identifier)
 
+  df_cohort <- df_cohort[!is.na(df_cohort[[col_cohort]]), ]
+  df_cohort <- df_cohort[!grepl("^\\s*$", df_cohort[[col_cohort]]), ]
   #merge based the cohort with the database based on the identifier
-  df_cohort<-merge(df_cohort,df_reference,by.x=col_cohort,by.y=paste0(col_reference,"_in_reference_",identifier), all.x=T)
+  df_cohort<-merge(df_cohort,df_reference,by.x=col_cohort,by.y=paste0(col_reference,"_in_reference_",identifier),all.x=T)
 
   # Annotate if there is a match between the cohort and the database based on the identifier or not
   new_column <- paste0("mapped_to_", col_reference)
@@ -193,6 +200,11 @@ match_identifier <- function(df_cohort, col_cohort,df_reference, col_reference, 
 
 map_unique_identifier <- function(df_cohort, col_cohort,df_reference, identifier) {
 
+
+  df_cohort_temp<-df_cohort%>%dplyr::select(col_cohort)
+
+
+
   if(identifier=="INCHIKEY"){
 
     df_reference_inchikey<-df_reference%>%dplyr::select(accession,name,inchikey_skeleton, inchikey_processed)
@@ -215,16 +227,16 @@ map_unique_identifier <- function(df_cohort, col_cohort,df_reference, identifier
     print("Mapping the names")
     df_reference_label<-df_reference%>%dplyr::select(accession,name,all_names)
     df_reference_label <- df_reference_label %>% separate_rows(all_names, sep = "\\|", convert = TRUE)
-    df_reference_label<-process_labels(df_reference_label, "all_names")
+    df_reference_label<-process_labels(df_reference_label, "all_names", reference=TRUE)
     df_reference_label<-distinct(df_reference_label,accession,label_processed, .keep_all = T)
-    df_cohort<-process_labels(df_cohort, col_cohort)
+    df_cohort<-process_labels(df_cohort, col_cohort, reference=FALSE)
     df_cohort<-match_identifier(df_cohort, df_reference_label, col_cohort="label_processed", col_reference="label_processed", identifier="NAME")
     mapped_labels<-sum(df_cohort$mapped_to_label_processed, na.rm = T)
     df_cohort<-df_cohort%>%dplyr::rename("mapped_to_name"="mapped_to_label_processed")
     print(paste(mapped_labels, " metabolites mapped to HMDB Ids based on their labels."))
 
     df_cohort<-df_cohort%>%dplyr::select(- all_names_in_reference_NAME)
-
+    #df_cohort<-merge(df_cohort_temp,df_cohort,by=col_cohort,all.x=T)
 
 
   } else if(identifier=="HMDB"){
@@ -244,7 +256,7 @@ map_unique_identifier <- function(df_cohort, col_cohort,df_reference, identifier
     df_cohort<-match_identifier(df_cohort, col_cohort=col_cohort, df_reference_chebi , col_reference="chebi_id", identifier="CHEBI")
     mapped_chebi<-sum(df_cohort$mapped_to_chebi_id, na.rm = T)
     print(paste(mapped_chebi, " metabolites mapped to HMDB Ids based on their CHEBI identifiers."))
-
+    #df_cohort<-merge(df_cohort_temp,df_cohort,by=col_cohort,all.x=T)
 
   } else if(identifier=="KEGG"){
 
@@ -252,8 +264,10 @@ map_unique_identifier <- function(df_cohort, col_cohort,df_reference, identifier
     df_cohort<-match_identifier(df_cohort, col_cohort=col_cohort, df_reference_kegg , col_reference="kegg_id", identifier="KEGG")
     mapped_kegg<-sum(df_cohort$mapped_to_kegg_id, na.rm = T)
     print(paste(mapped_kegg, " metabolites mapped to HMDB Ids based on their KEGG identifiers."))
-
+    #df_cohort<-merge(df_cohort_temp,df_cohort,by=col_cohort,all.x=T)
   }
+
+
 
   return(df_cohort)
   print("Mapping done")
@@ -318,8 +332,8 @@ extract_highest_star <- function(s) {
   if (length(highest_star_items) == 0) {
     return(NA_character_)
   }
-  # Combine all highest star items into a single string separated by '/'
-  return(paste(unlist(unique(highest_star_items)), collapse = "/"))
+  # Combine all highest star items into a single string separated by '|'
+  return(paste(unlist(unique(highest_star_items)), collapse = "|"))
 }
 
 
@@ -355,7 +369,7 @@ mapper_confidence_level <- function(data) {
 
   # Loop through each column name
   for (columnName in columnNames) {
-    # Check if the column name ends with "_HMDB", "_inchikey_", "_labels", or "_skeleton"
+    # Check if the column name ends with "_HMDB", "_inchikey_processed", "_labels", or "_skeleton"
     if (grepl("_HMDB$|_inchikey$|_NAME$|_skeleton$|_KEGG$|_CHEBI$", columnName)) {
       # Get the column using the $ operator
       data[[columnName]]<-as.character(data[[columnName]])
@@ -366,7 +380,7 @@ mapper_confidence_level <- function(data) {
         # Modify the column based on the specific condition
         if (grepl("_HMDB$", columnName)) {
           data[[columnName]] <- paste0(column, "***")
-        } else if (grepl("_inchikey$", columnName)) {
+        } else if (grepl("_inchikey_processed$", columnName)) {
           data[[columnName]] <- paste0(column, "***")
         }
         else if (grepl("_NAME$", columnName)) {
@@ -452,38 +466,8 @@ final_label_dataframe <- function(data_input,study_cols, details=FALSE, original
   name_columns <- grep("^name_in_reference", names(data_input), value = TRUE)
 
 
-  ###OLD
-  # Create new columns "HMDB_id" and "HMDB_label" by combining unique non-NA values
-  # data_input <- data_input %>%mutate(across(all_of(accession_columns), remove_stars_after_NA)) %>%
-  #   mutate(across(all_of(name_columns), remove_stars_after_NA)) %>%
-  #   rowwise() %>%
-  #   mutate(HMDB_id_list = {
-  #     values <- unique(na.omit(c_across(all_of(accession_columns))))
-  #     non_empty_values <- values[values != ""]
-  #     if (length(non_empty_values) > 0) {
-  #       paste(non_empty_values, collapse = "//")
-  #     } else {
-  #       NA_character_
-  #     }
-  #   })
-  #
-  # data_input <- data_input %>%
-  #   rowwise() %>%
-  #   mutate(HMDB_name_list = {
-  #     values <- unique(na.omit(c_across(all_of(name_columns))))
-  #     non_empty_values <- values[values != ""]
-  #     if (length(non_empty_values) > 0) {
-  #       paste(non_empty_values, collapse = "//")
-  #     } else {
-  #       NA_character_
-  #     }
-  #   })
-
-   ##END OLD
-
   data_input <- data_input %>%
     mutate(across(all_of(accession_columns), remove_stars_after_NA)) %>%  # Clean accession columns
-    mutate(across(all_of(name_columns), remove_stars_after_NA)) %>%      # Clean name columns
     rowwise() %>%  # Rowwise operation to process each row independently
     mutate(
       HMDB_id_list = {
@@ -507,13 +491,12 @@ final_label_dataframe <- function(data_input,study_cols, details=FALSE, original
 
 
   data_input <- data_input %>%
-    mutate(across(all_of(accession_columns), remove_stars_after_NA)) %>%  # Clean accession columns
     mutate(across(all_of(name_columns), remove_stars_after_NA)) %>%      # Clean name columns
     rowwise() %>%  # Rowwise operation to process each row independently
     mutate(
       HMDB_name_list = {
         # Get unique non-NA values from the accession columns
-        values <- unique(na.omit(c_across(all_of(accession_columns))))
+        values <- unique(na.omit(c_across(all_of(name_columns))))
         non_empty_values <- values[values != ""]
 
         # Concatenate non-empty values or return NA if no valid values
@@ -550,14 +533,7 @@ final_label_dataframe <- function(data_input,study_cols, details=FALSE, original
       return(max(attr(matches, "match.length"), na.rm = TRUE))
     }
   }))
-  # data_input <- data_input %>%
-  #   mutate(
-  #     Num_Stars = case_when(
-  #       Num_Stars == 6 ~ 3,  # If Num_Stars is 6, set it to 3
-  #       Num_Stars == 4 ~ 2,  # If Num_Stars is 4, set it to 2
-  #       TRUE ~ Num_Stars    # For other values, leave Num_Stars unchanged
-  #     )
-  #   )
+
 
   data_input <- data_input %>%
     mutate(HMDB_label = gsub("\\*", "", HMDB_label))%>%
@@ -565,8 +541,15 @@ final_label_dataframe <- function(data_input,study_cols, details=FALSE, original
 
 
   if (details==TRUE){
-    data_input_selected <- data_input
-    data_input_selected<-data_input_selected%>%rename("Highest Confidence Level"="Num_Stars")
+    # Extract column names starting with "mapped_to"
+    mapped_columns <- grep("^mapped_to", colnames(data_input), value = TRUE)
+    data_input_selected <- data_input%>%dplyr::select(original_colname,study_cols,mapped_columns, "HMDB_label", "HMDB_id", "Num_Stars")%>%
+      mutate(HMDB_label = gsub("\\*+$", "", HMDB_label))%>%
+      mutate(HMDB_id = gsub("\\*+$", "", HMDB_id))
+    data_input_selected<-data_input_selected%>%rename("Confidence Level"="Num_Stars")
+    data_input_selected <- data_input_selected %>%
+       mutate(across(mapped_columns, ~ replace(., is.na(.) | . == "NA", FALSE)))
+
 
   }else{
 
@@ -579,6 +562,12 @@ final_label_dataframe <- function(data_input,study_cols, details=FALSE, original
 
 
   data_input_selected <- dplyr::distinct(data_input_selected, .data[[original_colname]], .keep_all = TRUE)
+
+
+
+  data_input_selected <- data_input_selected %>%
+    mutate(across(ends_with(c("HMDB", "KEGG", "CHEBI","_skeleton","_processed")), ~ gsub("\\*+$", "", .)))
+
 
   return(data_input_selected)
 }

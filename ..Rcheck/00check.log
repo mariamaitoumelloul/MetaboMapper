@@ -18,6 +18,7 @@
 * checking for hidden files and directories ... NOTE
 Found the following hidden files and directories:
   .DS_Store
+  .RData
   .Rhistory
   .github/.gitignore
   .gitignore
