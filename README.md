@@ -1,4 +1,4 @@
-# MetaMapper Documentation
+# MetaboMapper Documentation
 
 MetaMapper is an R package developed to connect metabolite names and IDs from various metabolomic studies to HMDB identifiers, enabling cross-study comparisons. The package currently supports mapping the following types of identifiers to HMDB:
 
