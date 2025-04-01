@@ -218,7 +218,7 @@ clean_hmdb_data <- function(df_hmdb) {
 
   df_hmdb<-distinct(df_hmdb,accession,name, .keep_all = T)
 
-  df_hmdb <- process_labels(df_hmdb, "all_names")
+  df_hmdb <- process_labels(df_hmdb, "all_names", reference=T)
   df_hmdb <- process_inchikey(df_hmdb, "InChIKey")
 
 

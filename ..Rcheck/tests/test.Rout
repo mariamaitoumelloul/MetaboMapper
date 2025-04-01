@@ -25,7 +25,7 @@ Type 'q()' to quit R.
 > 
 > library(testthat)
 Warning message:
-package 'testthat' was built under R version 4.3.1 
+package 'testthat' was built under R version 4.3.3 
 > library(MetaboMapper)
 > 
 > test_check("MetaboMapper")
@@ -35,4 +35,4 @@ package 'testthat' was built under R version 4.3.1
 > 
 > proc.time()
    user  system elapsed 
-  0.313   0.040   0.351 
+  0.302   0.034   0.383 
